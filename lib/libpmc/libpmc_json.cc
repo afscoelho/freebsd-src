@@ -74,7 +74,7 @@ startentry(struct pmclog_ev *ev)
 {
 	char eventbuf[128];
 
-	snprintf(eventbuf, sizeof(eventbuf), "%s, \"tsc\": \"%jd\"",
+	snprintf(eventbuf, sizeof(eventbuf), "%s, \"tsc\": \"%ju\"",
 	    typenames[ev->pl_type], (uintmax_t)ev->pl_ts.tv_sec);
 	return (string(eventbuf));
 }
