@@ -1,0 +1,7 @@
+-I/home/andasilv/dev/freebsd/wt/custom/sys
+-I/home/andasilv/dev/freebsd/wt/custom/lib/libpmc
+-I/home/andasilv/dev/freebsd/wt/custom/lib/libpmcstat
+-I/home/andasilv/dev/freebsd/wt/custom/include
+-I/usr/include
+-D__FreeBSD__=16
+-D__FreeBSD_version=1600013
