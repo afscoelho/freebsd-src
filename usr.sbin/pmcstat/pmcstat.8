@@ -221,11 +221,11 @@ specified in
 Perform offline analysis using sampling data in file
 .Ar logfilename .
 Each decoded record is printed as a single line with the following fields:
-a 20-digit raw TSC value recording the CPU cycle at which the event
-occurred, the record type (e.g.,
+a record type (e.g.,
 .Dq callchain ,
 .Dq initlog ) ,
-and type-specific data.
+type-specific data, and a trailing 20-digit raw TSC value recording the
+CPU cycle at which the event occurred.
 The
 .Dq initlog
 record additionally prints
