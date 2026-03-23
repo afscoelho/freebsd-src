@@ -472,7 +472,7 @@ pmcstat_print_log(void)
 
 	while (pmclog_read(args.pa_logparser, &ev) == 0) {
 		assert(ev.pl_state == PMCLOG_OK);
-		_pmcstat_current_tsc = (uint64_t)ev.pl_ts.tv_sec;
+		_pmcstat_current_tsc = ev.pl_tsc;
 		switch (ev.pl_type) {
 		case PMCLOG_TYPE_CALLCHAIN:
 			PMCSTAT_PRINT_ENTRY("callchain",

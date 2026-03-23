@@ -77,7 +77,7 @@ struct pmclog_ev {
        enum pmclog_state pl_state;	/* parser state after 'get_event()' */
        off_t             pl_offset;	/* byte offset in stream */
        size_t            pl_count;	/* count of records so far */
-       struct timespec   pl_ts;		/* pl_ts.tv_sec contains raw TSC */
+       uint64_t          pl_tsc;	/* raw TSC from the event header */
        enum pmclog_type  pl_type;	/* log entry kind */
        union {				/* log entry data */
 		struct pmclog_ev_callchain   pl_cc;
@@ -136,10 +136,9 @@ Field
 .Va pl_count
 contains the serial number of this event.
 Field
-.Va pl_ts
+.Va pl_tsc
 carries the raw CPU Time Stamp Counter (TSC) value recorded at the time
-of the event, stored in
-.Va pl_ts.tv_sec .
+of the event.
 This is not a wall-clock time; to convert to nanoseconds divide the TSC
 delta between two events by the TSC frequency
 .Pq Va pl_u.pl_i.pl_tsc_freq
@@ -153,7 +152,7 @@ are only meaningful on x86 architectures
 .Pq amd64 and i386 .
 On all other architectures
 .Pq including arm64 and powerpc ,
-.Va pl_ts.tv_sec
+.Va pl_tsc
 and
 .Va pl_u.pl_i.pl_tsc_freq
 are set to zero.
