@@ -169,7 +169,10 @@ struct pmclog_ev {
 	enum pmclog_state pl_state;	/* state after 'get_event()' */
 	off_t		  pl_offset;	/* byte offset in stream */
 	size_t		  pl_count;	/* count of records so far */
-	uint64_t	  pl_tsc;	/* TSC timestamp */
+	union {
+		uint64_t	  pl_tsc;	/* TSC timestamp */
+		struct timespec pl_ts;		/* log entry timestamp (legacy) */
+	};
 	enum pmclog_type  pl_type;	/* type of log entry */
 	void		 *pl_data;
 	int		  pl_len;
